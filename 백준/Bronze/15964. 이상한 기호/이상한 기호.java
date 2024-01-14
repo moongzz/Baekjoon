@@ -6,10 +6,10 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String[] input = br.readLine().split(" ");
-		System.out.print(calculate(Integer.parseInt(input[0]), Integer.parseInt(input[1])));
+		System.out.print(calculate(Long.parseLong(input[0]), Long.parseLong(input[1])));
 	}
 	
-	public static int calculate(int A, int B){
+	public static long calculate(long A, long B){
 		return (A+B)*(A-B);
 	}
 }
