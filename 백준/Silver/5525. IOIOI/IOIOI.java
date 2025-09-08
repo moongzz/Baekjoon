@@ -7,21 +7,24 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
         int M = Integer.parseInt(br.readLine());
-        int count = 0;
-        StringBuilder P = new StringBuilder("IOI");
         String S = br.readLine();
 
-        if (N > 1) P.append("OI".repeat(N - 1));
+        int count = 0;
+        int result = 0;
 
-        String p = String.valueOf(P);
-        int index = S.indexOf(p);
-
-        while (index != -1) {
-            count++;
-            int start = index;
-            index = S.indexOf(p, start + 1);
+        for (int i = 1; i < M - 1; i++) {
+            if (S.charAt(i - 1) == 'I' && S.charAt(i) == 'O' && S.charAt(i + 1) == 'I') {
+                count++;
+                if (count == N) {
+                    result++;
+                    count--;
+                }
+                i++;
+            } else {
+                count = 0;
+            }
         }
 
-        System.out.println(count);
+        System.out.println(result);
     }
 }
