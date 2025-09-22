@@ -1,33 +1,34 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
-    static int n;
+    static int N;
 
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        n = in.nextInt();
-
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        N = Integer.parseInt(br.readLine());
         DFS(2, 1);
         DFS(3, 1);
         DFS(5, 1);
         DFS(7, 1);
     }
 
-    static void DFS(int a, int j) {
-        if (j == n) {
-            if (isPrime(a)) System.out.println(a);
+    static void DFS(int n, int j) {
+        if (j == N) {
+            if (isPrime(n)) System.out.println(n);
             return;
         }
         for (int i = 1; i < 10; i++) {
             if (i % 2 == 0) continue;
-            if (isPrime(a * 10 + i)) DFS(a * 10 + i, j + 1);
+            if (isPrime(n * 10 + i))
+                DFS(n * 10 + i, j + 1);
         }
     }
 
-    static boolean isPrime(int num) {
-        for (int i = 2; i <= num / 2; i++) {
-            if (num % i == 0) return false;
-        }
+    static boolean isPrime(int n) {
+        for (int i = 2; i <= n / 2; i++)
+            if (n % i == 0) return false;
         return true;
     }
 }
